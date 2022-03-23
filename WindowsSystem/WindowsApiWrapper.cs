@@ -4,10 +4,10 @@ namespace HidingCursorWhileTyping.WindowsSystem
 {
     internal class WindowsApiWrapper
     {
-        public static void SetSystemCursors(string cursorFileName)
+        public static void SetSystemCursors(Icon cursorIcon)
         {
             foreach (var cursorType in Enum.GetValues<CursorType>())
-                SetSystemCursor(cursorType, cursorFileName);
+                SetSystemCursor(cursorType, cursorIcon);
         }
 
         public static bool ReloadSystemCursors()
@@ -17,11 +17,7 @@ namespace HidingCursorWhileTyping.WindowsSystem
                 pvParam: IntPtr.Zero,
                 UserProfileUpdate.None);
 
-        private static void SetSystemCursor(CursorType cursorType, string cursorFileName)
-        {
-            var invisibleCursor = WindowsApi.LoadCursorFromFile(cursorFileName);
-
-            WindowsApi.SetSystemCursor(invisibleCursor, cursorType);
-        }
+        private static void SetSystemCursor(CursorType cursorType, Icon cursorIcon)
+            => WindowsApi.SetSystemCursor(cursorIcon.Handle, cursorType);
     }
 }

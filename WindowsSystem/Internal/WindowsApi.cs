@@ -4,23 +4,6 @@ namespace HideCursorWhileTyping.WindowsSystem.Internal
 {
     internal class WindowsApi
     {
-        /// <summary>Creates a cursor based on data contained in a file.</summary>
-        /// <param name="lpFileName">
-        /// <para>The source of the file data to be used to create the cursor. The data in the file must be in either .CUR or .ANI format.</para>
-        /// <para>
-        /// If the high-order word of lpFileName is nonzero,
-        /// it is a pointer to a string that is a fully qualified name of a file containing cursor data.</para>
-        /// </param>
-        /// <returns>
-        /// <para>If the function is successful, the return value is a handle to the new cursor.</para>
-        /// <para>
-        /// If the function fails, the return value is NULL.To get extended error information, call GetLastError.
-        /// GetLastError may return the following value.
-        /// </para>
-        /// </returns>
-        [DllImport("User32", CharSet = CharSet.Unicode)]
-        public static extern IntPtr LoadCursorFromFile(string lpFileName);
-
         /// <summary>
         /// Enables an application to customize the system cursors.
         /// It replaces the contents of the system cursor specified by the id parameter
@@ -66,8 +49,7 @@ namespace HideCursorWhileTyping.WindowsSystem.Internal
         /// <para>If the function succeeds, the return value is a nonzero value.</para>
         /// <para>If the function fails, the return value is zero.To get extended error information, call GetLastError.</para>
         /// </returns>
-        [DllImport("User32", SetLastError = true)]
-        [return: MarshalAs(UnmanagedType.Bool)]
+        [DllImport("User32")]
         public static extern bool SystemParametersInfo(SystemParametersInfoAction uiAction, uint uiParam, IntPtr pvParam, UserProfileUpdate fWinIni);
     }
 }

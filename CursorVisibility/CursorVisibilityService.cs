@@ -1,5 +1,4 @@
 ﻿using HidingCursorWhileTyping.WindowsSystem;
-using System.IO;
 using System.Windows.Input;
 using Cursor = System.Windows.Forms.Cursor;
 
@@ -7,12 +6,6 @@ namespace HidingCursorWhileTyping.CursorVisibility
 {
     internal class CursorVisibilityService
     {
-        public CursorVisibilityService()
-        {
-            if (!invisibleCursorFile.Exists)
-                throw new FileNotFoundException(message: null, fileName: invisibleCursorFile.FullName);
-        }
-
         public void UpdateCursorVisibility()
         {
             if (cursorVisible)
@@ -23,7 +16,7 @@ namespace HidingCursorWhileTyping.CursorVisibility
 
         public void HideCursor()
         {
-            WindowsApiWrapper.SetSystemCursors(invisibleCursorFile.FullName);
+            WindowsApiWrapper.SetSystemCursors(Resources.InvisibleCursorIcon);
             cursorVisible = false;
             hiddeningCursorPosition = Cursor.Position;
         }
@@ -58,6 +51,5 @@ namespace HidingCursorWhileTyping.CursorVisibility
 
         private bool cursorVisible = true;
         private Point hiddeningCursorPosition;
-        private readonly FileInfo invisibleCursorFile = new(@"Resources\InvisibleCursor.cur");
     }
 }
