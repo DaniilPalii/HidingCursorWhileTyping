@@ -1,5 +1,4 @@
 ﻿using System.Runtime.InteropServices;
-using System.Windows.Forms;
 
 namespace HideCursorWhileTyping.WindowsSystem.Internal
 {
@@ -8,11 +7,16 @@ namespace HideCursorWhileTyping.WindowsSystem.Internal
         /// <summary>Creates a cursor based on data contained in a file.</summary>
         /// <param name="lpFileName">
         /// <para>The source of the file data to be used to create the cursor. The data in the file must be in either .CUR or .ANI format.</para>
-        /// <para>If the high-order word of lpFileName is nonzero, it is a pointer to a string that is a fully qualified name of a file containing cursor data.</para>
+        /// <para>
+        /// If the high-order word of lpFileName is nonzero,
+        /// it is a pointer to a string that is a fully qualified name of a file containing cursor data.</para>
         /// </param>
         /// <returns>
         /// <para>If the function is successful, the return value is a handle to the new cursor.</para>
-        /// <para>If the function fails, the return value is NULL.To get extended error information, call GetLastError.GetLastError may return the following value.</para>
+        /// <para>
+        /// If the function fails, the return value is NULL.To get extended error information, call GetLastError.
+        /// GetLastError may return the following value.
+        /// </para>
         /// </returns>
         [DllImport("User32", CharSet = CharSet.Unicode)]
         public static extern IntPtr LoadCursorFromFile(string lpFileName);
@@ -23,7 +27,9 @@ namespace HideCursorWhileTyping.WindowsSystem.Internal
         /// with the contents of the cursor specified by the hcur parameter and then destroys hcur.
         /// </summary>
         /// <param name="hcur">
-        /// <para>A handle to the cursor. The function replaces the contents of the system cursor specified by id with the contents of the cursor handled by hcur.</para>
+        /// <para>
+        /// A handle to the cursor.
+        /// The function replaces the contents of the system cursor specified by id with the contents of the cursor handled by hcur.</para>
         /// <para>
         /// The system destroys hcur by calling the DestroyCursor function.
         /// Therefore, hcur cannot be a cursor loaded using the LoadCursor function.

@@ -1,4 +1,4 @@
-﻿using HideCursorWhileTyping.Windows;
+﻿using HidingCursorWhileTyping.WindowsSystem;
 using System.IO;
 using System.Windows.Input;
 using Cursor = System.Windows.Forms.Cursor;
@@ -60,6 +60,7 @@ namespace HidingCursorWhileTyping.CursorVisibility
         private Point hiddeningCursorPosition;
         private readonly FileInfo invisibleCursorFile = new(@"Resources\InvisibleCursor.cur");
 
+        // TODO: move to separate file Keys
         private static readonly IEnumerable<Key> ListenedKeys = new Key[]
         {
             Key.A,

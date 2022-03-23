@@ -1,6 +1,6 @@
 ﻿using HideCursorWhileTyping.WindowsSystem.Internal;
 
-namespace HideCursorWhileTyping.Windows
+namespace HidingCursorWhileTyping.WindowsSystem
 {
     internal class WindowsApiWrapper
     {
