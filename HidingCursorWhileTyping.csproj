@@ -10,17 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="publish\**" />
-    <EmbeddedResource Remove="publish\**" />
-    <None Remove="publish\**" />
-    <Page Remove="publish\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Using Remove="System.Windows.Forms" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Compile Update="CursorVisibility\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
