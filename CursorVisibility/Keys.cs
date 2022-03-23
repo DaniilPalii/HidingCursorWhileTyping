@@ -4,6 +4,19 @@ namespace HidingCursorWhileTyping.CursorVisibility
 {
     internal static class Keys
     {
+        public static bool IsPressed(this ModifierKeys key)
+            => Keyboard.Modifiers.HasFlag(key);
+
+        public static bool IsPressed(this Key key)
+            => Keyboard.IsKeyDown(key);
+
+        public static readonly IEnumerable<ModifierKeys> CommandModifierKeys = new ModifierKeys[]
+        {
+            ModifierKeys.Alt,
+            ModifierKeys.Control,
+            ModifierKeys.Windows,
+        };
+
         public static readonly IEnumerable<Key> Symbolic = new Key[]
         {
             Key.A,

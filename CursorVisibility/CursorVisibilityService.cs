@@ -1,5 +1,4 @@
 ﻿using HidingCursorWhileTyping.WindowsSystem;
-using System.Windows.Input;
 using Cursor = System.Windows.Forms.Cursor;
 
 namespace HidingCursorWhileTyping.CursorVisibility
@@ -29,18 +28,11 @@ namespace HidingCursorWhileTyping.CursorVisibility
 
         private void HideCursorIfKeyboardTyping()
         {
-            if (Keyboard.Modifiers.HasFlag(ModifierKeys.Alt | ModifierKeys.Control | ModifierKeys.Windows))
+            if (Keys.CommandModifierKeys.Any(k => k.IsPressed()))
                 return;
 
-            foreach (var key in Keys.Symbolic)
-            {
-                if (Keyboard.IsKeyDown(key))
-                {
-                    HideCursor();
-
-                    return;
-                }
-            }
+            if (Keys.Symbolic.Any(k => k.IsPressed()))
+                HideCursor();
         }
 
         private void ShowCursorIfMouseMoved()
