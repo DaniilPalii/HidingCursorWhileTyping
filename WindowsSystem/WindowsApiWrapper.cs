@@ -18,6 +18,9 @@ namespace HidingCursorWhileTyping.WindowsSystem
                 UserProfileUpdate.None);
 
         private static void SetSystemCursor(CursorType cursorType, Icon cursorIcon)
-            => WindowsApi.SetSystemCursor(cursorIcon.Handle, cursorType);
+            => WindowsApi.SetSystemCursor(
+                 // Cursor handle should be copied before passing to SetSystemCursor because the system destroys it
+                 WindowsApi.CopyIcon(cursorIcon.Handle), 
+                 cursorType);
     }
 }

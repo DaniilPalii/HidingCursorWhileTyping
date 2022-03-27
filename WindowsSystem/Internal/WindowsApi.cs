@@ -5,9 +5,16 @@ namespace HideCursorWhileTyping.WindowsSystem.Internal
     internal class WindowsApi
     {
         /// <summary>
+        /// <para>
         /// Enables an application to customize the system cursors.
         /// It replaces the contents of the system cursor specified by the id parameter
         /// with the contents of the cursor specified by the hcur parameter and then destroys hcur.
+        /// </para>
+        /// <para>
+        /// The system destroys hcur by calling the DestroyCursor function.
+        /// Therefore, hcur cannot be a cursor loaded using the LoadCursor function.
+        /// To specify a cursor loaded from a resource, copy the cursor using the CopyCursor function, then pass the copy to SetSystemCursor.
+        /// </para>
         /// </summary>
         /// <param name="hcur">
         /// <para>
@@ -26,6 +33,15 @@ namespace HideCursorWhileTyping.WindowsSystem.Internal
         /// </returns>
         [DllImport("User32")]
         public static extern bool SetSystemCursor(IntPtr hcur, CursorType id);
+
+        /// <summary>Copies the specified icon from another module to the current module.</summary>
+        /// <param name="hIcon">A handle to the icon to be copied.</param>
+        /// <returns>
+        /// <para>If the function succeeds, the return value is a handle to the duplicate icon.</para>
+        /// <para>If the function fails, the return value is NULL. To get extended error information, call GetLastError.</para>
+        /// </returns>
+        [DllImport("User32")]
+        public static extern IntPtr CopyIcon(IntPtr hIcon);
 
         /// <summary>
         /// Retrieves or sets the value of one of the system-wide parameters. This function can also update the user profile while setting a parameter.
