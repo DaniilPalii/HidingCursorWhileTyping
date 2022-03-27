@@ -11,6 +11,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AdditionalFiles Remove="App.manifest" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="CursorVisibility\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
